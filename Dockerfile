@@ -14,4 +14,5 @@ RUN   mkdir -p /usr/local/src/ && cd /usr/local/src/ && \
       ./sys/install.sh && \
       make symstall
 
+WORKDIR /opt/share/
 EXPOSE 80

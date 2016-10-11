@@ -6,7 +6,7 @@ RUN apt-get -qq update && \
     apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial main" && \
     add-apt-repository ppa:ubuntu-toolchain-r/test && \
     apt-get -qq update && \
-    apt-get install -y gdb gdbserver build-essential valgrind vim git net-tools nodejs nodejs-legacy npm clang-3.9 lldb-3.9 gcc-5 g++-5 gcc-6 g++-6 && \
+    apt-get install -y gdb gdbserver build-essential valgrind vim git net-tools clang-3.9 lldb-3.9 gcc-5 g++-5 gcc-6 g++-6 libcurl3-openssl-dev strace upx && \
     apt-get -qq clean && \
     apt-get -y -qq autoremove && \
     rm -rf /var/lib/{apt,dpkg,cache,log}/ && \

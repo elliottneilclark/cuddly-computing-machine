@@ -1,7 +1,12 @@
-FROM ubuntu
+FROM ubuntu:16.04
 MAINTAINER eclark@apache.org
 RUN apt-get -qq update && \
-    apt-get install -y gdb gdbserver build-essential valgrind vim git && \
+    apt-get install -y wget software-properties-common && \
+    wget -O - http://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
+    apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial main" && \
+    add-apt-repository ppa:ubuntu-toolchain-r/test && \
+    apt-get -qq update && \
+    apt-get install -y gdb gdbserver build-essential valgrind vim git net-tools nodejs nodejs-legacy npm clang-3.9 lldb-3.9 gcc-5 g++-5 gcc-6 g++-6 && \
     apt-get -qq clean && \
     apt-get -y -qq autoremove && \
     rm -rf /var/lib/{apt,dpkg,cache,log}/ && \
@@ -15,4 +20,4 @@ RUN   mkdir -p /usr/local/src/ && cd /usr/local/src/ && \
       make symstall
 
 WORKDIR /opt/share/
-EXPOSE 80
+EXPOSE 9090
